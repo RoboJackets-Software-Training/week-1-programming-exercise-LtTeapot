@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 std::vector<double> readInVector(std::string s) {
   int prev_location = 0;
@@ -37,9 +38,36 @@ int main() {
 
   // TODO write your code here
   // =========== START =========
+  int sum;
+  int index;
+  for (int i = 0; i < x.size(); i++) {
+    sum = 0;
+    for (int k = 0; k < w.size(); k++) {
+      index = i - (int)w.size()/2 + k;
+      if (!pack_with_zeros) {
+        index = std::max(0, std::min(index, (int)x.size()-1) );
+      }
+      if (index >= 0 && index < x.size()) {
+        sum += x[index] * w[k];
+      }
+    }
+    y.push_back(sum);
+  }
 
-
-
+  // PRINT
+  std::cout << "x: ";
+  for (double v : x) {
+    std::cout << v << ' ';
+  }
+  std::cout << std::endl << "w: ";
+  for (double v : w) {
+    std::cout << v << ' ';
+  }
+  std::cout << std::endl << "y: ";
+  for (double v : y) {
+    std::cout << v << ' ';
+  }
+   std::cout << std::endl;
 
   // =========== END ===========
 
