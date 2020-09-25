@@ -10,7 +10,24 @@ int main()
     std::cin >> str;
 
     // Palindrome Check
-    // WRITE YOUR PALINDROME CHECK HERE
+    bool result = true;
+
+    int start = 0;
+    int end = str.length() - 1;
+    while (start < end) {
+        if (str[start] != str[end]) {
+            result = false;
+            break;
+        }
+        start++;
+        end--;
+    }
+
+    if (result) {
+        std::cout << str << " is a palindrome" << std::endl;
+    } else {
+        std::cout << str << " is NOT a palindrome" << std::endl;
+    }
 
     return 0;
 }
